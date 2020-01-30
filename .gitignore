@@ -26,3 +26,4 @@
 /config/master.key
 /environments/db.env
 /db/grant_user.sql
+.DS_Store
