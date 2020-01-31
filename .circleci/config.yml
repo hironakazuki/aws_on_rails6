@@ -19,9 +19,13 @@ jobs:
       - run:
           name: データベースの起動を待機
           command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
+      # - run:
+      #     name: データベースのセットアップ
+      #     command: bundle exec rake db:schema:load
       - run:
-          name: データベースのセットアップ
-          command: bundle exec rake db:schema:load
+          # DBの作成とマイグレーションを実行する
+          name: setup db
+          command: bundle exec rails db:create db:migrate
       - run: 
           name: テストの実行
           command: bundle exec rspec
@@ -29,6 +33,6 @@ jobs:
 
 workflows:
   version: 2
-  workflows:
+  build_and_deploy:
     jobs:
       - test
