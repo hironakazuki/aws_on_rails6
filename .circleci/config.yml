@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.3-node-browsers
         environment:
-          RAILS_ENV: test'
+          RAILS_ENV: 'test'
           DATABASE_HOSTNAME: '127.0.0.1'
       - image: circleci/mysql:5.7
         environment:
