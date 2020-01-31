@@ -4,8 +4,8 @@ services:
     build:
       context: .
     command: bundle exec puma -C config/puma.rb
-    # environment:
-    #   RAILS_ENV: 'production'
+    env_file:
+      - ./environments/db.env
     volumes:
       - .:/webapp
       - public-data:/webapp/public
