@@ -14,9 +14,19 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - restore_cache:
+        name: bundle installの結果をrestore
+        keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          - v1-dependencies-
       - run:
           name: bundle install
-          command: bundle install --path vendor/bundle
+          command: bundle install --path vendor/bundle --clean --jobs 4 --retry 3
+      - save_cache:
+          name: bundle installの結果をキャッシュ
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       - run:
           name: データベースの起動を待機
           command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
@@ -26,7 +36,7 @@ jobs:
       - run:
           # DBの作成とマイグレーションを実行する
           name: setup db
-          command: bundle exec rails db:create db:migrate
+          command: bundle exec rails db:create db:schema:load
       - run: 
           name: テストの実行
           command: bundle exec rspec
