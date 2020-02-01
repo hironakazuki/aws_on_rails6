@@ -15,7 +15,6 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-        name: bundle installの結果をrestore
         keys:
           - v1-dependencies-{{ checksum "Gemfile.lock" }}
           - v1-dependencies-
@@ -23,7 +22,6 @@ jobs:
           name: bundle install
           command: bundle install --path vendor/bundle --clean --jobs 4 --retry 3
       - save_cache:
-          name: bundle installの結果をキャッシュ
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -33,10 +31,8 @@ jobs:
       # - run:
       #     name: データベースのセットアップ
       #     command: bundle exec rake db:schema:load
-      - run:
-          # DBの作成とマイグレーションを実行する
-          name: setup db
-          command: bundle exec rails db:create db:schema:load
+      - run: bundle exec rails db:create
+      - run: bundle exec rails db:schema:load
       - run: 
           name: テストの実行
           command: bundle exec rspec
