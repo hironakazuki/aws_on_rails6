@@ -74,4 +74,4 @@ workflows:
           # masterブランチがpushされた場合のみdeployするようにする。
           filters:
             branches:
-              only: ciecleci
+              only: master
