@@ -7,13 +7,25 @@ jobs:
         environment:
           RAILS_ENV: 'test'
           DATABASE_HOSTNAME: '127.0.0.1'
+
       - image: circleci/mysql:5.7
         environment:
           MYSQL_ROOT_PASSWORD: 'password'
           MYSQL_DATABASE: webapp_test
+
     working_directory: ~/repo
+
     steps:
       - checkout
+      - run:
+          name: Install System Dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y libappindicator1 fonts-liberation
+            export CHROME_BIN=/usr/bin/google-chrome
+            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+            sudo dpkg -i google-chrome*.deb
+            
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -28,11 +40,9 @@ jobs:
       - run:
           name: データベースの起動を待機
           command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
-      # - run:
-      #     name: データベースのセットアップ
-      #     command: bundle exec rake db:schema:load
-      - run: bundle exec rails db:create
-      - run: bundle exec rails db:schema:load
+      - run:
+          name: データベースのセットアップ
+          command: bundle exec rake db:create db:schema:load
       - run:
           # テストを実行する
           name: Run Rspec
