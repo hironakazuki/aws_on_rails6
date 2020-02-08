@@ -14,7 +14,7 @@ module Webapp
       g.assets false
       g.helper false
       g.jbuilder false
-      g.test_framework false
+      g.test_framework :rspec, controller_specs: false
     end
 
     # Settings in config/environments/* take precedence over those specified here.

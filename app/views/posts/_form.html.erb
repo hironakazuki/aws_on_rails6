@@ -17,10 +17,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :content %>
     <%= form.rich_text_area :content %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit nil, class: 'btn' %>
   </div>
 <% end %>
