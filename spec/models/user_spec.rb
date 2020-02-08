@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
       email: 'example@example.com'
     )
     user.valid?
-    expect(user.errors[:name]).to include("can't be blank")
+    expect(user.errors[:name]).to include("を入力してください")
   end
   it 'emailがなければ無効な状態であること' do
     user = User.new(
@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
       email: ''
     )
     user.valid?
-    expect(user.errors[:email]).to include("can't be blank")
+    expect(user.errors[:email]).to include("を入力してください")
   end
   it '重複したemailなら無効な状態であること' do
     User.create(
@@ -27,6 +27,6 @@ RSpec.describe User, type: :model do
       email: 'example@example.com'
     )
     user.valid?
-    expect(user.errors[:email]).to include("has already been taken")
+    expect(user.errors[:email]).to include("はすでに存在します")
   end
 end

@@ -10,6 +10,9 @@ ja:
     model:
       post: ポスト
     attributes:
+      user:
+        name: 名前
+        email: メールアドレス
       post:
         title: タイトル
         content: 本文
