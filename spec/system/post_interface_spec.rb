@@ -5,9 +5,9 @@ RSpec.describe "PostsInterfaceTest", type: :system, js: true do
     describe '新規作成機能' do
       before {
           visit new_post_path
-          fill_in 'Title', with: post_title
+          fill_in 'タイトル', with: post_title
           fill_in_rich_text_area "post_content", with: post_content
-          click_button 'Create Post'
+          click_button '登録する'
         }
       context '有効なpostを送信した場合' do
         let(:post_title) { '新規作成のテスト' }
@@ -21,8 +21,8 @@ RSpec.describe "PostsInterfaceTest", type: :system, js: true do
         let(:post_title) { '' }
         let(:post_content) { '' }
         it "エラーとなること" do
-          expect(page).to have_content "Title can't be blank"
-          expect(page).to have_content "Content can't be blank"
+          expect(page).to have_content "タイトルを入力してください"
+          expect(page).to have_content "コンテンツを入力してください"
         end
       end
     end
@@ -30,9 +30,9 @@ RSpec.describe "PostsInterfaceTest", type: :system, js: true do
       let(:test_post) { FactoryBot.create(:post) }
       before {
         visit edit_post_path(test_post)
-        fill_in 'Title', with: post_title
+        fill_in 'タイトル', with: post_title
         fill_in_rich_text_area "post_content", with: post_content
-        click_button 'Update Post'
+        click_button '更新する'
       }
       context '有効なpostを送信した場合' do
         let(:post_title) { '更新のテスト' }
@@ -46,8 +46,8 @@ RSpec.describe "PostsInterfaceTest", type: :system, js: true do
         let(:post_title) { '' }
         let(:post_content) { '' }
         it "エラーとなること" do
-          expect(page).to have_content "Title can't be blank"
-          expect(page).to have_content "Content can't be blank"
+          expect(page).to have_content "タイトルを入力してください"
+          expect(page).to have_content "コンテンツを入力してください"
         end
       end
     end

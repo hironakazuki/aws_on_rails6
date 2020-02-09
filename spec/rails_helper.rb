@@ -45,9 +45,9 @@ RSpec.configure do |config|
   end
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  # config.before(:suite) do
-  #   FactoryBot.find_definitions
-  # end
+  config.before(:suite) do
+    FactoryBot.reload
+  end
   config.include ActionTextHelper, type: :system
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
