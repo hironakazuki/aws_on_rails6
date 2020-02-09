@@ -15,7 +15,7 @@ ja:
         email: メールアドレス
       post:
         title: タイトル
-        content: 本文
+        content: コンテンツ
   errors:
     format: "%{attribute}%{message}"
     messages:
@@ -41,6 +41,7 @@ ja:
       required: を入力してください
       taken: はすでに存在します
       too_long: は%{count}文字以内で入力してください
+      too_long_post_content: が%{max_content_length}文字を超えています。 [%{length}/%{max_content_length}]
       too_short: は%{count}文字以上で入力してください
       wrong_length: は%{count}文字で入力してください
     template:
