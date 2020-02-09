@@ -46,6 +46,7 @@ ja:
       # 自己定義
       too_long_post_content: が%{max_content_length}文字を超えています。 [%{length}/%{max_content_length}]
       content_attachment_byte_size_is_too_big: の添付ファイルは%{max_content_attachment_mega_byte_size}MB以下にしてください。 [%{byte_size}/%{max_content_attachment_byte_size}]
+      content_attachments_count_is_too_big: の添付ファイルの数は%{max_content_attachments_count}つまでです。[%{length}/%{max_content_attachments_count}]
     template:
       body: 次の項目を確認してください
       header:
