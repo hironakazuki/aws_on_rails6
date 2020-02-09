@@ -22,7 +22,7 @@ RSpec.describe "PostsInterfaceTest", type: :system, js: true do
         let(:post_content) { '' }
         it "エラーとなること" do
           expect(page).to have_content "タイトルを入力してください"
-          expect(page).to have_content "本文を入力してください"
+          expect(page).to have_content "コンテンツを入力してください"
         end
       end
     end
@@ -47,7 +47,7 @@ RSpec.describe "PostsInterfaceTest", type: :system, js: true do
         let(:post_content) { '' }
         it "エラーとなること" do
           expect(page).to have_content "タイトルを入力してください"
-          expect(page).to have_content "本文を入力してください"
+          expect(page).to have_content "コンテンツを入力してください"
         end
       end
     end
