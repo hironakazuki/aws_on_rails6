@@ -33,8 +33,6 @@ RUN apt-get update && apt-get install -y unzip && \
 RUN mkdir /webapp
 WORKDIR /webapp
 
-RUN bundle config build.nokogiri --use-system-libraries
-
 # ホストのGemfileとGemfile.lockをコンテナにコピー
 ADD Gemfile /webapp/Gemfile
 ADD Gemfile.lock /webapp/Gemfile.lock
