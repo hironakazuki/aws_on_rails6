@@ -9,6 +9,7 @@ services:
     volumes:
       - public-data:/webapp/public
       - log-data:/webapp/log
+      - tmp-data:/webapp/tmp
     command: bundle exec puma -C config/puma.rb
   nginx:
     build:
