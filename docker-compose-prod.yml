@@ -15,6 +15,7 @@ services:
       context: containers/nginx
     volumes:
       - public-data:/webapp/public
+      - tmp-data:/webapp/tmp
     ports:
       - 80:80
     depends_on:
@@ -22,3 +23,4 @@ services:
 volumes:
   public-data:
   log-data:
+  tmp-data:
