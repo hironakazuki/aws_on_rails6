@@ -1,0 +1,26 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    environment:
+      RAILS_ENV: 'production'
+    volumes:
+      - public-data:/webapp/public
+      - log-data:/webapp/log
+    command: bundle exec puma -C config/puma.rb
+  nginx:
+    build:
+      context: containers/nginx
+    volumes:
+      - public-data:/webapp/public
+      - tmp-data:/webapp/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - web
+volumes:
+  public-data:
+  log-data:
+  tmp-data:
