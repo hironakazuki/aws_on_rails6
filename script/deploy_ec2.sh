@@ -13,8 +13,8 @@ aws ec2 authorize-security-group-ingress --group-id $MYSECURITYGROUP --protocol 
 # EC2にログインして、デプロイする
 ssh ${USER_NAME}@${HOST_NAME} 'cd /home/rukoshio/aws_on_rails6 && \
 git pull && docker-compose -f docker-compose-prod.yml build && \
-docker-compose -f docker-compose-prod.yml run app bundle exec rails db:migrate && \
-docker-compose -f docker-compose-prod.yml run app bundle install && \
+docker-compose -f docker-compose-prod.yml run web bundle exec rails db:migrate && \
+docker-compose -f docker-compose-prod.yml run web bundle install && \
 docker-compose -f docker-compose-prod.yml restart'
 # 自身のグローバルIPアドレスからEC2が属するSGへのアクセス許可を取り消す
 aws ec2 revoke-security-group-ingress --group-id $MYSECURITYGROUP --protocol tcp --port 22 --cidr $MYIP/32
