@@ -24,6 +24,8 @@ services:
     command: bundle exec sidekiq
   redis:
     image: redis
+    volumes:
+      - redis:/data
   db:
     image: mysql:5.7
     environment:
@@ -36,3 +38,4 @@ volumes:
   db-data:
   bundle:
   rails_cache:
+  redis:

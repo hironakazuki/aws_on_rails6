@@ -21,6 +21,8 @@ services:
     command: bundle exec sidekiq --environment=production
   redis:
     image: redis
+    volumes:
+      - redis:/data
   nginx:
     build:
       context: containers/nginx
@@ -33,3 +35,4 @@ volumes:
   log-data:
   tmp-data:
   bundle:
+  redis:
