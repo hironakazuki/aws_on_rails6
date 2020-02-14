@@ -5,26 +5,23 @@ services:
       context: .
     environment:
       REDIS_URL: redis://redis:6379
-  web:
-    <<: *app
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/webapp:cached
-    ports:
-    - "3000:3000"
+      - rails_cache:/webapp/tmp/cache
+      - bundle:/bundle
     depends_on:
       - db
       - redis
+  web:
+    <<: *app
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    ports:
+    - "3000:3000"
     tty: true
     stdin_open: true
   worker:
     <<: *app
     command: bundle exec sidekiq
-    volumes:
-      - .:/webapp:cached
-    depends_on:
-      - db
-      - redis
   redis:
     image: redis
   db:
@@ -37,3 +34,5 @@ services:
       - db-data:/var/lib/mysql
 volumes:
   db-data:
+  bundle:
+  rails_cache:

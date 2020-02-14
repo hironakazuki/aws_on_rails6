@@ -17,6 +17,7 @@ RUN echo "ja_JP.UTF-8 UTF-8" > /etc/locale.gen && \
   /usr/sbin/update-locale LANG=ja_JP.UTF-8
 ENV LC_ALL ja_JP.UTF-8
 
+#capybara: google chromedriverのインストール
 RUN apt-get update && apt-get install -y unzip && \
     CHROME_DRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
     wget -N http://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P ~/ && \
