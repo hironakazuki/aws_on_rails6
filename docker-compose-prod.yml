@@ -28,6 +28,8 @@ services:
       context: containers/nginx
     ports:
       - 80:80
+    volumes:
+      - tmp-data:/webapp/tmp
     depends_on:
       - web
 volumes:
