@@ -3,6 +3,11 @@ services:
   app: &app
     build:
       context: .
+      args:
+        RUBY_VERSION: '2.6.3'
+        NODE_MAJOR: '11'
+        YARN_VERSION: '1.13.0'
+        BUNDLER_VERSION: '2.0.2'
     environment:
       REDIS_URL: redis://redis:6379
     volumes:
