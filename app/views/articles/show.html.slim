@@ -1,0 +1,13 @@
+p#notice
+  = notice
+p
+  strong
+    | Title:
+  = @article.title
+p
+  = @article.content
+= link_to 'Edit', edit_article_path(@article)
+|  | 
+= link_to 'Destroy', @article, method: :delete, data: { confirm: "「#{@article.title}」を削除します。よろしいですか？" }
+|  | 
+= link_to 'Back', articles_path

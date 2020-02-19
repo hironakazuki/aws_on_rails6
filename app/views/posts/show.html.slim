@@ -1,0 +1,13 @@
+p#notice
+  = notice
+p
+  strong
+    | Title:
+  = @post.title
+p
+  = @post.content
+= link_to 'Edit', edit_post_path(@post)
+|  | 
+= link_to 'Destroy', @post, method: :delete, data: { confirm: "「#{@post.title}」を削除します。よろしいですか？" }
+|  | 
+= link_to 'Back', posts_path
