@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
+<p><%= ActiveStorage::Blob.pluck(:id).count %></p>
+<p><%= ActiveStorage::Attachment.pluck(:blob_id).uniq.count %></p>
 
 <table>
   <thead>
