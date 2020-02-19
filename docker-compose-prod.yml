@@ -1,32 +1,29 @@
 version: '3'
 services:
-  web:
+  app: &app
     build:
       context: .
       dockerfile: Dockerfile.prod
+      args:
+        RUBY_VERSION: '2.6.3'
+        NODE_MAJOR: '11'
+        YARN_VERSION: '1.13.0'
+        BUNDLER_VERSION: '2.0.2'
     environment:
-      RAILS_ENV: 'production'
       REDIS_URL: redis://redis:6379
+      RAILS_ENV: 'production'
     volumes:
-      - public-data:/webapp/public
-      - log-data:/webapp/log
+      - .:/webapp:cached
+      - bundle:/bundle
       - tmp-data:/webapp/tmp
+      - public-data:/webapp/public
     depends_on:
       - redis
+  web:
+    <<: *app
     command: bundle exec puma -C config/puma.rb
   worker:
-    build:
-      context: .
-      dockerfile: Dockerfile.prod
-    environment:
-      RAILS_ENV: 'production'
-      REDIS_URL: redis://redis:6379
-    volumes:
-      - public-data:/webapp/public
-      - log-data:/webapp/log
-      - tmp-data:/webapp/tmp
-    depends_on:
-      - redis
+    <<: *app
     command: bundle exec sidekiq
   redis:
     image: redis
@@ -47,3 +44,4 @@ volumes:
   log-data:
   tmp-data:
   redis:
+  bundle:

@@ -1,5 +1,4 @@
 ARG RUBY_VERSION
-# 後述
 FROM ruby:$RUBY_VERSION
 
 ARG NODE_MAJOR
@@ -15,7 +14,6 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -\
   && echo 'deb http://dl.yarnpkg.com/debian/ stable main' > /etc/apt/sources.list.d/yarn.list
 
 # 依存関係をインストール
-# 外部のAptfileでやってる（後ほどお楽しみに！）
 COPY .dockerdev/Aptfile /tmp/Aptfile
 RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yq dist-upgrade &&\
     DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends\
