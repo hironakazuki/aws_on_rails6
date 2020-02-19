@@ -7,11 +7,13 @@ jobs:
         environment:
           RAILS_ENV: 'test'
           DATABASE_HOSTNAME: '127.0.0.1'
+          BUNDLER_VERSION: 2.0.2
 
       - image: circleci/mysql:5.7
         environment:
           MYSQL_ROOT_PASSWORD: 'password'
           MYSQL_DATABASE: webapp_test
+          
 
     working_directory: ~/repo
 
@@ -26,7 +28,14 @@ jobs:
             export CHROME_BIN=/usr/bin/google-chrome
             wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
             sudo dpkg -i google-chrome*.deb
-            
+      - run:
+          name: setup bundler
+          command: |
+            sudo gem update --system
+            sudo gem uninstall bundler
+            sudo rm /usr/local/bin/bundle
+            sudo rm /usr/local/bin/bundler
+            sudo gem install bundler
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
