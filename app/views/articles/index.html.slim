@@ -1,11 +1,5 @@
-p#notice
-  = notice
 h1
   | Articles
-p
-  = ActiveStorage::Blob.pluck(:id).count
-p
-  = ActiveStorage::Attachment.pluck(:blob_id).uniq.count
 table
   thead
     tr
@@ -22,6 +16,6 @@ table
         td
           = link_to 'Edit', edit_article_path(article)
         td
-          = link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to 'Destroy', article, method: :delete, data: { confirm: "「#{article.title}」を削除します。よろしいですか？" }
 br
 = link_to 'New Article', new_article_path

@@ -1,11 +1,5 @@
-p#notice
-  = notice
 h1
   | Posts
-p
-  = ActiveStorage::Blob.pluck(:id).count
-p
-  = ActiveStorage::Attachment.pluck(:blob_id).uniq.count
 table
   thead
     tr
