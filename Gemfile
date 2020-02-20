@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'image_processing', '~> 1.2'
 gem 'aws-sdk-s3', require: false
 gem 'sidekiq', '< 7'
+gem 'slim-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
