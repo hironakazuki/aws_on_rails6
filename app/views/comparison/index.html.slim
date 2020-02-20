@@ -1,0 +1,10 @@
+p#notice
+  = notice
+p
+  | ActiveStorage::Blobの数：
+  = ActiveStorage::Blob.pluck(:id).count
+p
+  | ActiveStorage::Attachmentの数：
+  = ActiveStorage::Attachment.pluck(:blob_id).uniq.count
+= render template: 'posts/index'
+= render template: 'articles/index'
