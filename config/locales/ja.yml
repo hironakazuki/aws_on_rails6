@@ -9,11 +9,15 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     model:
       post: ポスト
+      article: 記事
     attributes:
       user:
         name: 名前
         email: メールアドレス
       post:
+        title: タイトル
+        content: コンテンツ
+      article:
         title: タイトル
         content: コンテンツ
   errors:
