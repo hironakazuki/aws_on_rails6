@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         DeleteUnreferencedBlobJob.perform_later
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post, notice: "#{@post.title}を作成しました。"}
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update(post_params)
         DeleteUnreferencedBlobJob.perform_later
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post, notice: "#{@post.title}を更新しました。"}
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -56,9 +56,9 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    @post.destroy
+    DeleteUnreferencedBlobJob.perform_later if @post.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: "#{@post.title}を削除しました。"}
       format.json { head :no_content }
     end
   end

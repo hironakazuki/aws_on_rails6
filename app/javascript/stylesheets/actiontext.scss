@@ -4,10 +4,19 @@
 // inclusion directly in any other asset bundle and remove this file.
 //
 //= require trix/dist/trix
+@import 'trix/dist/trix.css';
 
 // We need to override trix.css’s image gallery styles to accommodate the
 // <action-text-attachment> element we wrap around attachments. Otherwise,
 // images in galleries will be squished by the max-width: 33%; rule.
+trix-toolbar{
+  .trix-button{
+    background: #fff;
+  }
+}
+trix-editor{
+  background: #fff;
+}
 .trix-content {
   .attachment-gallery {
     > action-text-attachment,

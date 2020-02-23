@@ -1,0 +1,13 @@
+- if object.errors.present?
+  ul#error_explanation
+    - object.errors.full_messages.each do |message|
+      li = message
+
+= form_with(model: object, local: true) do |form|
+  .field
+    = form.text_field :title, class:'form-control mb-4', placeholder:'タイトル'
+  .field
+    = form.label :content
+    = form.rich_text_area :content
+  .actions
+    = form.submit nil, class: 'btn btn-raised btn-info mt-4'
