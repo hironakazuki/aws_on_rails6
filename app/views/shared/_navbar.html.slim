@@ -1,0 +1,7 @@
+= link_to_unless_current '詳細', object
+|  | 
+= link_to_unless_current '編集', send("edit_#{object.class.to_s.downcase}_path", object)
+|  | 
+= link_to '削除', object, method: :delete, data: { confirm: "「#{object.title}」を削除します。よろしいですか？" }
+|  | 
+= link_to '一覧へ戻る', root_path

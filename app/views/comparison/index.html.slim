@@ -1,10 +1,15 @@
-p#notice
-  = notice
-p
-  | ActiveStorage::Blobの数：
-  = ActiveStorage::Blob.pluck(:id).count
-p
-  | ActiveStorage::Attachmentの数：
-  = ActiveStorage::Attachment.pluck(:blob_id).uniq.count
-= render template: 'posts/index'
-= render template: 'articles/index'
+div.card
+  div.card-body
+    h5
+      | ActiveStorage::Blobの数： 
+      = ActiveStorage::Blob.pluck(:id).count
+  div.card-body
+    h5
+      | ActiveStorage::Attachmentの数：
+      = ActiveStorage::Attachment.pluck(:blob_id).uniq.count
+div.row.mt-3
+  div.col-xl-6
+    = render 'shared/index', objects: @posts
+  div.m-4.d-block.d-xl-none
+  div.col-xl-6  
+    = render 'shared/index', objects: @articles

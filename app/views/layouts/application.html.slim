@@ -5,8 +5,10 @@ html
       | Webapp
     = csrf_meta_tags
     = csp_meta_tag
-    / = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application'
-  body
+  body.pt-5
     div.container
+      - if flash.notice.present?
+        div.alert.alert-success = flash.notice
       = yield

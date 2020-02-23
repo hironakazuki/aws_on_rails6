@@ -1,6 +1,4 @@
 h1
-  | Editing Post
-= render 'form', post: @post
-= link_to 'Show', @post
-|  | 
-= link_to 'Back', root_path
+  | #{@post.title}の編集
+= render 'shared/form', object: @post
+= render 'shared/navbar', object: @post

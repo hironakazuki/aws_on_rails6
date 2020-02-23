@@ -1,5 +1,4 @@
 h1
-  | New Post
-= render 'form', post: @post
-div.text-right
-  = link_to 'Back', root_path
+  | 新しいポスト
+= render 'shared/form', object: @post
+= link_to '一覧へ戻る', root_path
