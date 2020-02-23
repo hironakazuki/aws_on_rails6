@@ -1,13 +1,9 @@
-p#notice
-  = notice
 p
   strong
-    | Title:
+    | タイトル : 
   = @post.title
 p
+  strong
+    | コンテンツ
   == @post.content
-= link_to 'Edit', edit_post_path(@post)
-|  | 
-= link_to 'Destroy', @post, method: :delete, data: { confirm: "「#{@post.title}」を削除します。よろしいですか？" }
-|  | 
-= link_to 'Back', root_path
+= render 'shared/navbar', object: @post

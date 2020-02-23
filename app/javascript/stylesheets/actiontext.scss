@@ -14,8 +14,10 @@ trix-toolbar{
     background: #fff;
   }
 }
-.trix-content {
+trix-editor{
   background: #fff;
+}
+.trix-content {
   .attachment-gallery {
     > action-text-attachment,
     > .attachment {
