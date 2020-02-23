@@ -14,9 +14,11 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
 console.log('Hello World from Webpacker')
 
 require("rails-ujs").start()
 require("trix")
 require("@rails/actiontext")
+
+import 'bootstrap-material-design'
+import '../stylesheets/application'

@@ -1,0 +1,26 @@
+h1 = I18n.t("activerecord.model.#{objects.model_name.to_s.downcase}")
+table.table.table-hoer
+  thead
+    tr
+      th[scope='col']
+        | タイトル
+      th[scope='col']
+        | コンテンツ
+      th[scope='col']
+        | 添付画像の数
+  tbody
+    - objects.each do |object|
+      tr
+        td[scope='row']
+          = link_to object.title.truncate(10), object
+        td[scope='row']
+          = object.content.to_plain_text.truncate(20)
+        td[scope='row']
+          = object.content.embeds_attachments.count
+        td
+          = link_to '編集', send("edit_#{object.model_name.to_s.downcase}_path", object), class: 'btn btn-raised btn-info'
+        td
+          = link_to '削除', object, method: :delete, data: { confirm: "「#{object.title}」を削除します。よろしいですか？" }, class: 'btn btn-raised btn-danger'
+
+= link_to "#{I18n.t("activerecord.model.#{objects.model_name.to_s.downcase}")}を書く", send("new_#{objects.model_name.to_s.downcase}_path"), class: 'btn btn-raised btn-success'
+

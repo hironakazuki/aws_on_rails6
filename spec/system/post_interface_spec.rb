@@ -56,15 +56,15 @@ RSpec.describe "PostsInterfaceTest", type: :system, js: true do
       context 'confirmダイアログでOKを選択したとき' do
         it '正常に削除される' do
           visit post_path(test_post)
-          click_link 'Destroy'
+          click_link '削除'
           page.driver.browser.switch_to.alert.accept
-          expect(page).to have_content 'Post was successfully destroyed.'
+          expect(page).to have_content 'を削除しました。'
         end
       end
       context 'confirmダイアログでキャンセルを選択したとき' do
         it '削除されない' do
           visit post_path(test_post)
-          click_link 'Destroy'
+          click_link '削除'
           page.driver.browser.switch_to.alert.dismiss
           expect(page).to have_content 'テストタイトル'
         end
