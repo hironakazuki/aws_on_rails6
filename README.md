@@ -10,6 +10,8 @@
 
 # 概要
 Rails6新機能action_textを使ったタスクの追加／変更／削除が可能 + redis, sidekiqでバックグラウンドでゴミデータ削除するwebページ
+
+製作期間 2/1(土)~2/25(火)
 ## Webページ
 https://hks-portfolio.work
 # 利用技術と内容
