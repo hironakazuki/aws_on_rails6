@@ -7,11 +7,11 @@
 -  工夫した点
 -  苦労した点
 -  参考
-
-# 概要
-Rails6新機能action_textを使ったタスクの追加／変更／削除が可能 + redis, sidekiqでバックグラウンドでゴミデータ削除するwebページ
 
-製作期間 2/1(土)~2/25(火)
+# 概要
+Rails6新機能action_textを使ったタスクの追加／変更／削除が可能 + redis, sidekiqでバックグラウンドでゴミデータ削除するwebページ
+
+製作期間 2/1(土)~2/25(火)
 ## Webページ
 https://hks-portfolio.work
 # 利用技術と内容
@@ -23,10 +23,10 @@ https://hks-portfolio.work
     - MySQL 5.7
     - nginx 1.15.8
 -  内容
-    - action_textを使ったrich_textフォームの実装
+    - action_textを使ったrich_textフォームの実装
     - Rspecを使ったテスト( model, system )
-    - redis, sidekiqを使ったバックグラウンドジョブ([詳しくはこちら](https://qiita.com/ruko_zss/items/bb02e755711456c85c52))
-## フロントエンド
+    - redis, sidekiqを使ったバックグラウンドジョブ([詳しくはこちら](https://qiita.com/ruko_zss/items/bb02e755711456c85c52))
+## フロントエンド
 -  利用技術
     - Material Design for Bootstrap 4
 ## インフラ
@@ -39,21 +39,21 @@ https://hks-portfolio.work
     - 開発環境 / 本番環境をDockerで構築
     - 関連付けされてないs3の画像ファイルをバックグラウンドジョブで削除
     - Cloudflareによるhttps化
-    - CIによるデプロイの自動化
+    - CIによるデプロイの自動化
         - GitHubへのpushがトリガー
         - masterブランチ＆テスト成功時のみデプロイ
 # この課題を通して学んだこと
 - AWSの各種サービスの基本概念や接続方法とその利用方法
-- CircleCIの各種設定や利用方法
+- CircleCIの各種設定や利用方法
 - Dockerの仕組み
-- redisサーバを用いたsidekiqによる非同期処理
+- redisサーバを用いたsidekiqによる非同期処理
 # 工夫した点
 - 本番環境と開発環境でdockerの設定ファイルを分ける
 - AWS CLIを用いて、デプロイ時のみCircleCIからEC2へのアクセスを許可する
-# 苦労した点
+# 苦労した点
 - 以下２点の参考サイトが少なく、苦労した。
     - Docker + EC2を使った自動デプロイ
-    - gem aws-sdk-s3を使ったs3操作
+    - gem aws-sdk-s3を使ったs3操作
 # 参考
 - [AWS：ゼロから実践するAmazon Web Services。手を動かしながらインフラの基礎を習得 - Udemy](https://www.udemy.com/course/aws-and-infra/)
 - [ハンズオンで学ぶ Ruby on Rails 6 < Action Text を支えるデータベースアソシエーション編 > - Udemy](https://www.udemy.com/course/ruby-on-rails-action-text/)
