@@ -4,6 +4,7 @@ jobs:
   test:
     docker:
       - image: circleci/ruby:2.6.3-node-browsers
+        # 環境変数の定義
         environment:
           RAILS_ENV: 'test'
           DATABASE_HOSTNAME: '127.0.0.1'
@@ -20,6 +21,7 @@ jobs:
     steps:
       - checkout
       - run:
+          # system_testで使うgoogle-chromeのインストール
           name: Install System Dependencies
           command: |
             sudo apt-get update
