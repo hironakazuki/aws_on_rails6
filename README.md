@@ -7,6 +7,7 @@
 -  工夫した点
 -  苦労した点
 -  参考
+-  使用方法
 
 # 概要
 Rails6新機能action_textを使ったタスクの追加／変更／削除が可能 + redis, sidekiqでバックグラウンドでゴミデータ削除するwebページ
@@ -63,3 +64,12 @@ https://hks-portfolio.work
 - [CircleCI2.0からEC2にアクセスするときだけ特定のIPを許可したい - Qiita](https://qiita.com/rintaro-ishikawa/items/02e6a63dbc90ea67a991)
 - [Rails5.2でCircleCIビルドエラー。 - Qiita](https://qiita.com/murata0705/items/9c99fc715d8b987a5b6e)
 - [Ruby on Rails5 から「aws-sdk-s3」を使って画像をアップロードする](https://blog.seiyamaeda.com/12645)
+
+# 使用方法
+```
+docker-compose build
+docker-compose run web bundle install
+docker-compose run web rails db:create
+docker-compose run web rails db:migrate
+docker-compose up -d
+```
