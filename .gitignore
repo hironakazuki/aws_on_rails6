@@ -24,7 +24,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-/environments/db.env
 /db/grant_user.sql
 .DS_Store
 
