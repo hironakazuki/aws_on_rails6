@@ -39,7 +39,7 @@ https://hks-portfolio.work
 -  内容
     - 開発環境 / 本番環境をDockerで構築
     - 関連付けされてないs3の画像ファイルをバックグラウンドジョブで削除
-    - Cloudflareによるhttps化
+    - Cloud flareによるhttps化
     - CIによるデプロイの自動化
         - GitHubへのpushがトリガー
         - masterブランチ＆テスト成功時のみデプロイ
