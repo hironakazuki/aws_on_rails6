@@ -14,7 +14,6 @@ jobs:
         environment:
           MYSQL_ROOT_PASSWORD: 'password'
           MYSQL_DATABASE: webapp_test
-          
 
     working_directory: ~/repo
 
@@ -26,7 +25,7 @@ jobs:
           command: |
             sudo apt-get update
             yarn install --check-files
-            sudo apt-get install -y libappindicator1 fonts-liberation
+            sudo apt-get install -y libappindicator1 fonts-liberation libgbm-dev
             export CHROME_BIN=/usr/bin/google-chrome
             wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
             sudo dpkg -i google-chrome*.deb
@@ -75,7 +74,7 @@ jobs:
       # CircleCIに登録した秘密鍵を呼び出す。
       - add_ssh_keys:
           fingerprints:
-            - "${KEY_FINGERPRINT}"
+            - '${KEY_FINGERPRINT}'
       # AWS CLIのインストール
       - run:
           name: install awscli
@@ -84,7 +83,6 @@ jobs:
       - run:
           name: deploy to EC2
           command: sh script/deploy_ec2.sh
-
 
 # テストが成功した場合のみ、deployを実行するようにします。
 workflows:
